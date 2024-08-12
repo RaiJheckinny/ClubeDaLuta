@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:p="http://www.primefaces.org/ui">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Apostador</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Azul claro */
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background-color: #7b1fa2; /* Roxo vibrante */
+            padding: 20px;
+            margin-top: 0;
+            border-bottom: 4px solid #6a1b9a; /* Roxo mais escuro */
+        }
+
+        /* Estilo do formulário */
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff; /* Fundo branco para o formulário */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra leve */
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc; /* Borda cinza claro */
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #76ff03; /* Verde limão */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #64dd17; /* Verde limão mais escuro */
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #00796b; /* Azul esverdeado */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Cadastro de Apostador</h1>
+
+<form action="#" th:action="@{/apostador/save}" th:object="${apostador}" method="post">
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required maxlength="50" />
+    </div>
+    <div>
+        <label for="passaport">Passaporte:</label>
+        <input type="text" id="passaport" th:field="*{passaport}" required />
+    </div>
+    <div>
+        <label for="time">Time:</label>
+        <select id="time" th:field="*{time}" required>
+            <option value="" disabled selected>Selecione um Time</option>
+            <option th:each="time : ${times}" th:value="${time}" th:text="${time}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="valorApostado">Valor Apostado:</label>
+        <input type="text" id="valorApostado" th:field="*{valorApostado}" required />
+    </div>
+    <div>
+        <button type="submit">Salvar</button>
+    </div>
+</form>
+</body>
+</html>

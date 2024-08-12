@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:p="http://www.primefaces.org/ui">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Lutadores</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Fundo claro */
+            color: #333; /* Texto escuro */
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background-color: #ff5722; /* Laranja vibrante */
+            padding: 20px;
+            margin-top: 0;
+            border-bottom: 4px solid #e64a19; /* Linha inferior em tom mais escuro */
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #ffffff; /* Fundo branco para a tabela */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra leve */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Linha de divisão clara */
+        }
+
+        th {
+            background-color: #00bcd4; /* Azul turquesa */
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #e0f7fa; /* Azul claro ao passar o mouse */
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        .actions a {
+            color: #ff5722; /* Laranja vibrante */
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .actions a:hover {
+            color: #e64a19; /* Tom mais escuro de laranja ao passar o mouse */
+            text-decoration: underline;
+        }
+
+        /* Estilo do link de voltar */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            color: #00bcd4; /* Azul turquesa */
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #0097a7; /* Azul turquesa mais escuro */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista de Lutadores</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Pagamento Do Lutador</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lutador, iterStat : ${lutadores}">
+        <td th:text="${iterStat.index + 1}"></td> <!-- Número do lutador -->
+        <td th:text="${lutador.nome}"></td>
+        <td th:text="${lutador.pagamentoLutador}"></td>
+        <td th:text="${lutador.status}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

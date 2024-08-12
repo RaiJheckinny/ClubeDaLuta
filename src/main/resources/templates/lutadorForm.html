@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:p="http://www.primefaces.org/ui">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Lutadores</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Fundo claro */
+            color: #333; /* Texto escuro */
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background-color: #ff5722; /* Laranja vibrante */
+            padding: 20px;
+            margin-top: 0;
+            border-bottom: 4px solid #e64a19; /* Linha inferior em tom mais escuro */
+        }
+
+        /* Estilo do formulário */
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff; /* Fundo branco para o formulário */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra leve */
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd; /* Borda clara */
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #00bcd4; /* Azul turquesa */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0097a7; /* Azul turquesa mais escuro */
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #00bcd4; /* Azul turquesa */
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0097a7; /* Azul turquesa mais escuro */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Cadastro de Lutadores</h1>
+
+<form action="#" th:action="@{/lutador/save}" th:object="${lutador}" method="post">
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required maxlength="50" />
+    </div>
+    <div>
+        <button type="submit">Cadastrar</button>
+    </div>
+</form>
+</body>
+</html>

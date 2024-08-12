@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Apostadores</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Azul claro */
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background-color: #7b1fa2; /* Roxo vibrante */
+            padding: 20px;
+            margin-top: 0;
+            border-bottom: 4px solid #6a1b9a; /* Roxo mais escuro */
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%; /* Ajusta a tabela para ocupar toda a largura do contêiner */
+            margin: 20px auto;
+            border-collapse: collapse; /* Remove espaços entre as bordas das células */
+            background: #ffffff; /* Fundo branco para a tabela */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra leve */
+            table-layout: fixed; /* Ajusta a tabela para ter uma largura fixa */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center; /* Centraliza o texto */
+            border-bottom: 1px solid #ddd; /* Borda cinza claro */
+            box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+        }
+
+        th {
+            background-color: #76ff03; /* Verde limão */
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f8e9; /* Verde muito claro para linhas pares */
+        }
+
+        tr:hover {
+            background-color: #c8e6c9; /* Verde limão mais claro para hover */
+        }
+
+        /* Estilo do link de voltar */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            color: #00796b; /* Azul esverdeado */
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista de Apostadores</h1>
+<table>
+    <thead>
+    <tr>
+        <th style="width: 10%;">#</th>
+        <th style="width: 25%;">Nome</th>
+        <th style="width: 20%;">Passaport</th>
+        <th style="width: 20%;">Status</th>
+        <th style="width: 25%;">Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="apostador, iterStat : ${apostadores}">
+        <td th:text="${iterStat.index + 1}"></td> <!-- Número da linha -->
+        <td th:text="${apostador.nome}">Nome</td>
+        <td th:text="${apostador.passaport}">Passaport</td>
+        <td th:text="${apostador.status}">Status</td>
+        <td th:text="${apostador.time}">Time</td>
+    </tr>
+    </tbody>
+</table>
+<a href="#" class="back-link">Voltar</a> <!-- Link de voltar, adicione o URL correto -->
+</body>
+</html>
